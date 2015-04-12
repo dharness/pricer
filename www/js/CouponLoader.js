@@ -97,16 +97,19 @@ CouponLoader.prototype.next = function(decision) {
         });
     }
 
+
 }
 
-function updateUser() {
+function updateUser(callback) {
     console.log("Out of coupons!");
     $.post("http://dylandjoegotosanfrancisco.com:3002/updateUser", {
         username: "morgan",
         deals: window.currentCoupons
     }).done(function(data) {
         console.log(data);
+        callback();
     });
+
 
 }
 
