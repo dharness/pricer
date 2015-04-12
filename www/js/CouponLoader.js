@@ -5,7 +5,6 @@ endEvent = isTouchSupported ? 'touchend' : 'mouseup';
 
 function CouponLoader() {
     this.couponIndex = 0;
-    this.savedDeals = [];
 }
 
 CouponLoader.prototype.init = function() {
@@ -72,7 +71,7 @@ CouponLoader.prototype.next = function(decision) {
 
     this.couponIndex++; //increment to the next coupon
 
-    if (this.couponIndex == window.currentCoupons.length - 1) //Out of coupons
+    if (this.couponIndex == window.currentCoupons.length) //Out of coupons
         updateUser();
 
     console.log(this.couponIndex);
@@ -103,7 +102,7 @@ CouponLoader.prototype.getCoupons = function() {
         username: "morgan"
     }).done(function(data) {
         window.currentCoupons = data;
-        console.log("Got the dataa");
+        console.log(data);
     });
 }
 
