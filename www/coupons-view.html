@@ -10,16 +10,16 @@
     <style>    
      
     </style>
+
     <core-ajax handleas="json" method="GET" id="core_ajax" hidden></core-ajax>
     <core-scroll-header-panel headermargin="128" condenses headerheight="192" id="core_scroll_header_panel">
       <core-toolbar id="core_toolbar" class="tall">
         <core-icon-button icon="arrow-back" id="core_icon_button" onClick="erase()"></core-icon-button>
         <div id="div" flex></div>
-        <core-icon-button icon="more-vert" id="core_icon_button2"></core-icon-button>
-        <div id="div1" class="bottom indent">Title</div>
+        <div id="div1" class="bottom indent">My Coupons</div>
       </core-toolbar>
       <section id="section" content>
-      	
+      	<paper-spinner class="blue" role="progressbar" aria-label="loading" active="" style="position: absolute; top: 250px; left: 175px"></paper-spinner>
       	<content select="list"></content>
 
       </section>
