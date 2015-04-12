@@ -13,7 +13,6 @@ CouponLoader.prototype.init = function() {
         x: 0,
         y: 0
     }
-    window.kingCoup.count = 0;
 
     $("#dragImage").on(startEvent, function(e) {
         down.x = e.originalEvent.touches[0].pageX;
@@ -63,7 +62,6 @@ CouponLoader.prototype.init = function() {
         console.log('ending')
     });
 
-
 }
 
 
@@ -75,8 +73,13 @@ CouponLoader.prototype.next = function(decision) {
     } else if (decision == "discard") {
         window.currentCoupons[this.couponIndex].swiped = false;
     }
+    this.couponIndex++; //increment to the next coupon
 
+    this.loadCurrent();
 
+}
+
+CouponLoader.prototype.loadCurrent = function() {
     console.log(this.couponIndex);
     var imgToShow = window.currentCoupons[window.kingCoup.couponIndex].showImageStandardBig;
     var dealTitle = window.currentCoupons[window.kingCoup.couponIndex].dealTitle;
@@ -85,7 +88,7 @@ CouponLoader.prototype.next = function(decision) {
     strVar += "<coupon-shell width='400px' height='400px'><couponImage><img = src='" + imgToShow + "'\/><\/couponImage><couponTitle>" + dealTitle + "<\/couponTitle><couponDetails>" + dealInfo + "<\/couponDetails><\/coupon-shell>";
     $('#imageContainer').html(strVar);
 
-    this.couponIndex++; //increment to the next coupon
+
 
     if (this.couponIndex == window.currentCoupons.length) { //Out of coupons
         updateUser(function(callback) {
@@ -96,8 +99,6 @@ CouponLoader.prototype.next = function(decision) {
             });
         });
     }
-
-
 }
 
 function updateUser(callback) {
@@ -115,6 +116,8 @@ function updateUser(callback) {
 
 
 CouponLoader.prototype.getCoupons = function(callback) {
+    //start a lil wheel
+
     $.post("http://dylandjoegotosanfrancisco.com:3002/deals", {
         username: "morgan"
     }).done(function(data) {
@@ -122,6 +125,10 @@ CouponLoader.prototype.getCoupons = function(callback) {
         console.log(data);
         if (callback)
             callback();
+
+        //stop a lil wheel
+        window.kingCoup.loadCurrent();
+
     });
 }
 

@@ -77,10 +77,16 @@ CouponLoader.prototype.next = function(decision) {
     }
 
 
+
+}
+
+CouponLoader.prototype.loadCurrent = function() {
     console.log(this.couponIndex);
     var imgToShow = window.currentCoupons[window.kingCoup.couponIndex].showImageStandardBig;
+    var dealTitle = window.currentCoupons[window.kingCoup.couponIndex].dealTitle;
+    var dealInfo = window.currentCoupons[window.kingCoup.couponIndex].dealInfo.substring(0, 20) + '...';
     var strVar = "";
-    strVar += '<img id=\"dragImage\" width=\"300\" height=\"200\" src=\"' + imgToShow + '\">';
+    strVar += "<coupon-shell width='400px' height='400px'><couponImage><img = src='" + imgToShow + "'\/><\/couponImage><couponTitle>" + dealTitle + "<\/couponTitle><couponDetails>" + dealInfo + "<\/couponDetails><\/coupon-shell>";
     $('#imageContainer').html(strVar);
 
     this.couponIndex++; //increment to the next coupon
@@ -94,11 +100,9 @@ CouponLoader.prototype.next = function(decision) {
             });
         });
     }
-
-
 }
 
-function updateUser() {
+function updateUser(callback) {
     console.log("Out of coupons!");
     $.post("http://dylandjoegotosanfrancisco.com:3002/updateUser", {
         username: "morgan",

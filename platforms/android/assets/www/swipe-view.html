@@ -44,14 +44,14 @@
             }
 
             core-scaffold::shadow core-toolbar {
-  background: #EC8C50;
-  color: black;
-}
+              background: #EC8C50;
+              color: black;
+            }
 
-core-scaffold::shadow core-header-panel {
-  background: #FFF;
-  color: white;
-}
+            core-scaffold::shadow core-header-panel {
+              background: #FFF;
+              color: white;
+            }
             #core_toolbar {
                 color: rgb(255, 255, 255);
                 background-color: #FF9857;
@@ -113,8 +113,8 @@ core-scaffold::shadow core-header-panel {
 
                 </core-menu>
             </core-header-panel>
-            <div tool>Price Mice
-            <button id = "listCoups" onclick="moveToCV()">My Coupons</button>
+            <div tool>Deal Mining
+            <paper-button raised id = "listCoups" onclick="moveToCV()">My Coupons</paper=button>
             </div>
             
 
@@ -122,7 +122,8 @@ core-scaffold::shadow core-header-panel {
                 <!-- <img id="dragImage" width="300" height="250" src="resources/images/sampleCoupon.png"> -->
                 <div class="wow">
                     <center>
-                        <coupon-shell width="400px" height="400px"></coupon-shell>
+                    <content select="image-container"></content>
+                        <!-- <coupon-shell width="400px" height="400px"></coupon-shell> -->
                     </center>
                 </div>  
             </div>
@@ -130,7 +131,7 @@ core-scaffold::shadow core-header-panel {
      <!--        <div id="imageContainer">
                 <img id="dragImage" width="300" height="250" src="resources/images/sampleCoupon.png">
             </div> -->
-            <content select="image-container"></content>
+            
 
             <paper-fab id="clip" style="position: absolute; top: 450px; left: 230px; background-color: #57A549;" icon="sketch-icons:scissors" onclick="kingCoup.next('keep')"></paper-fab>
             
