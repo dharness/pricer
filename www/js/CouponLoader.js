@@ -79,8 +79,10 @@ CouponLoader.prototype.next = function(decision) {
 
     console.log(this.couponIndex);
     var imgToShow = window.currentCoupons[window.kingCoup.couponIndex].showImageStandardBig;
+    var dealTitle = window.currentCoupons[window.kingCoup.couponIndex].dealTitle;
+    var dealInfo = window.currentCoupons[window.kingCoup.couponIndex].dealInfo.substring(0, 20) + '...';
     var strVar = "";
-    strVar += "<coupon-shell width='400px' height='400px'><couponImage><img = src='" + imgToShow + "'\/><\/couponImage><\/coupon-shell>";
+    strVar += "<coupon-shell width='400px' height='400px'><couponImage><img = src='" + imgToShow + "'\/><\/couponImage><couponTitle>" + dealTitle + "<\/couponTitle><couponDetails>" + dealInfo + "<\/couponDetails><\/coupon-shell>";
     $('#imageContainer').html(strVar);
 
     this.couponIndex++; //increment to the next coupon
