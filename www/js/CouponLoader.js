@@ -5,6 +5,7 @@ endEvent = isTouchSupported ? 'touchend' : 'mouseup';
 
 function CouponLoader() {
     this.couponIndex = 0;
+
 }
 
 CouponLoader.prototype.init = function() {
@@ -69,29 +70,20 @@ CouponLoader.prototype.next = function(decision) {
 
     //Update the swiped attribute of the last coupon
     if (decision == "keep") {
-        window.currentCoupons[this.couponIndex].swiped = true;
+        window.currentCoupons[this.couponIndex - 1].swiped = true;
     } else if (decision == "discard") {
-        window.currentCoupons[this.couponIndex].swiped = false;
+        window.currentCoupons[this.couponIndex - 1].swiped = false;
     }
 
-    this.couponIndex++;
+
 
     this.loadCurrent();
+    this.couponIndex++;
     //increment to the next coupon
 
 }
 
 CouponLoader.prototype.loadCurrent = function() {
-    console.log(this.couponIndex);
-    var imgToShow = window.currentCoupons[window.kingCoup.couponIndex].showImageStandardBig;
-    var dealTitle = window.currentCoupons[window.kingCoup.couponIndex].dealTitle;
-    var dealInfo = window.currentCoupons[window.kingCoup.couponIndex].dealInfo.substring(0, 20) + '...';
-    var strVar = "";
-    strVar += "<coupon-shell width='400px' height='400px'><couponImage><img = src='" + imgToShow + "'\/><\/couponImage><couponTitle>" + dealTitle + "<\/couponTitle><couponDetails>" + dealInfo + "<\/couponDetails><\/coupon-shell>";
-    $('#imageContainer').html(strVar);
-
-
-
     if (this.couponIndex == window.currentCoupons.length) { //Out of coupons
         updateUser(function(callback) {
             window.kingCoup.couponIndex = 0;
@@ -100,7 +92,17 @@ CouponLoader.prototype.loadCurrent = function() {
                     alert("No more coupons to swipe! Please increase your radius, or get more adventurous :)");
             });
         });
+    } else {
+        console.log(this.couponIndex);
+        var imgToShow = window.currentCoupons[window.kingCoup.couponIndex].showImageStandardBig;
+        var dealTitle = window.currentCoupons[window.kingCoup.couponIndex].dealTitle;
+        var dealInfo = window.currentCoupons[window.kingCoup.couponIndex].dealInfo.substring(0, 20) + '...';
+        var strVar = "";
+        strVar += "<coupon-shell width='400px' height='400px'><couponImage><img = src='" + imgToShow + "'\/><\/couponImage><couponTitle>" + dealTitle + "<\/couponTitle><couponDetails>" + dealInfo + "<\/couponDetails><\/coupon-shell>";
+        $('#imageContainer').html(strVar);
     }
+
+
 }
 
 function updateUser(callback) {
@@ -130,6 +132,8 @@ CouponLoader.prototype.getCoupons = function(callback) {
 
         //stop a lil wheel
         window.kingCoup.loadCurrent();
+
+        window.kingCoup.couponIndex++;
 
     });
 }
