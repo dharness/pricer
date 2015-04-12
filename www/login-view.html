@@ -53,29 +53,44 @@
                         username: "morgan"
                     }).done(function(res) {
 
-
+                        console.log(' ======= Apres moi =======')
                         console.log(res[0]);
                         var data = res[0].deals;
-                        console.log(data)
                         
-                   var list = document.createElement('ul');
+                       var list = document.createElement('div');
+                       list.setAttribute('id', 'people');
 
-                    for(var i = 0; i < data.length; i++) {
-                        // Create the list item:
-                        var item = document.createElement('li');
+                        for(var i = 0; i < data.length; i++) {
+                            // Create the list item:
+                            console.log(' ======= Apres tu =======')
+                            console.log(data[i].showImageStandardBig)
 
-                        // Set its contents:
-                        // item.appendChild(document.createTextNode(data[i].dealTitle));
-                        item.appendChild(document.createTextNode(data[i].dealTitle));
+                            var item = document.createElement('div');
+                            item.setAttribute('class','person');
+                            list.appendChild(item);
 
-                        // Add it to the list:
-                        list.appendChild(item);
-                    }
+                            // Set its contents:
+                            var span = document.createElement('span');
+                            item.appendChild(span);
+
+                            var image = document.createElement('img');
+                            image.setAttribute('src', data[i].showImageStandardBig);
+                            span.appendChild(image);
+
+                            var h = document.createElement('H1');
+                            var t = document.createTextNode(data[i].dealTitle);
+                            h.appendChild(t)
+
+                            span.appendChild(h);
+
+                            // Add it to the list:
+                            list.appendChild(item);
+                        }
                     document.getElementById('couponsList').appendChild(list);
                     });
 
 
-                    }, 0);
+                    }, 1000);
                 }
             </script>
 
