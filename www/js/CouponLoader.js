@@ -63,7 +63,7 @@ CouponLoader.prototype.init = function() {
         console.log('ending')
     });
 
-    window.kingCoup.getCoupons();
+
 }
 
 
@@ -76,40 +76,50 @@ CouponLoader.prototype.next = function(decision) {
         window.currentCoupons[this.couponIndex].swiped = false;
     }
 
-    this.couponIndex++; //increment to the next coupon
-
-    if (this.couponIndex == window.currentCoupons.length) //Out of coupons
-        updateUser();
 
     console.log(this.couponIndex);
-    // console.log(currentCoupons);
-    var imgToShow = window.currentCoupons[window.kingCoup.count].showImageStandardBig;
-    window.kingCoup.count++;
-    // console.log("data", window.currentCoupons)
-    // console.log("img ", imgToShow)
+    var imgToShow = window.currentCoupons[window.kingCoup.couponIndex].showImageStandardBig;
     var strVar = "";
     strVar += '<img id=\"dragImage\" width=\"300\" height=\"200\" src=\"' + imgToShow + '\">';
     $('#imageContainer').html(strVar);
+
+    this.couponIndex++; //increment to the next coupon
+
+    if (this.couponIndex == window.currentCoupons.length) { //Out of coupons
+        updateUser(function(callback) {
+            window.kingCoup.couponIndex = 0;
+            window.kingCoup.getCoupons(function(cb) {
+                if (window.currentCoupons.length == 0)
+                    alert("No more coupons to swipe! Please increase your radius, or get more adventurous :)");
+            });
+        });
+    }
+
+
 }
 
-function updateUser() {
+function updateUser(callback) {
     console.log("Out of coupons!");
     $.post("http://dylandjoegotosanfrancisco.com:3002/updateUser", {
         username: "morgan",
         deals: window.currentCoupons
     }).done(function(data) {
         console.log(data);
+        callback();
     });
+
 
 }
 
 
-CouponLoader.prototype.getCoupons = function() {
+CouponLoader.prototype.getCoupons = function(callback) {
     $.post("http://dylandjoegotosanfrancisco.com:3002/deals", {
         username: "morgan"
     }).done(function(data) {
         window.currentCoupons = data;
         console.log(data);
+        if (callback)
+            callback();
     });
 }
 
