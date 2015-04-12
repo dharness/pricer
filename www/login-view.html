@@ -13,6 +13,11 @@
             <script type="text/javascript">
                 app.initialize();
                 function erase() {
+                    window.username = document.getElementById("login");
+                        if(name.value.indexOf(' ') === -1){
+                            alert('not a valid email');
+                        }
+
 
                     var strVar="";
                     strVar += "                    <form>";
@@ -51,7 +56,7 @@
                 
                 <h1>Log-in</h1><br>
                 <input type="text" name="user" placeholder="Username">
-                <input type="submit" name="login" class="login login-submit" onclick="erase()">
+                <input id ='login' type="submit" name="login" class="login login-submit" onclick="erase()">
             </div>
 
 <!--             <button onclick="erase()">LOGIN</button> -->
