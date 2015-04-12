@@ -76,17 +76,9 @@ CouponLoader.prototype.next = function(decision) {
         window.currentCoupons[this.couponIndex].swiped = false;
     }
 
-    this.couponIndex++; //increment to the next coupon
-
-    if (this.couponIndex == window.currentCoupons.length) //Out of coupons
-        updateUser();
 
     console.log(this.couponIndex);
-    // console.log(currentCoupons);
-    var imgToShow = window.currentCoupons[window.kingCoup.count].showImageStandardBig;
-    window.kingCoup.count++;
-    // console.log("data", window.currentCoupons)
-    // console.log("img ", imgToShow)
+    var imgToShow = window.currentCoupons[window.kingCoup.couponIndex].showImageStandardBig;
     var strVar = "";
     strVar += '<img id=\"dragImage\" width=\"300\" height=\"200\" src=\"' + imgToShow + '\">';
     $('#imageContainer').html(strVar);
