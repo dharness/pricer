@@ -7,11 +7,11 @@ var CouponLoader = function() {}
 
 CouponLoader.prototype.init = function() {
 
-    alert('init')
     var down = {
         x: 0,
         y: 0
     }
+    kingCoup.count = 0;
 
     $("#dragImage").on(startEvent, function(e) {
         down.x = e.originalEvent.touches[0].pageX;
@@ -45,18 +45,46 @@ CouponLoader.prototype.init = function() {
 }
 
 CouponLoader.prototype.next = function() {
+    // console.log(currentCoupons);
+    var imgToShow = currentCoupons[kingCoup.count].showImageStandardBig;
+    kingCoup.count++;
     var strVar = "";
-    strVar += "<img id=\"dragImage\" width=\"300\" height=\"200\" src=\"resources\/images\/sampleCoupon.png\">";
+    strVar += '<img id=\"dragImage\" width=\"300\" height=\"200\" src=\"' + imgToShow + '\">';
 
     $('#imageContainer').html(strVar);
 }
 
 CouponLoader.prototype.getCoupons = function() {
-    $.get("http://localhost:3002/deals", function(data, status) {
-        window.coupons = data;
-        alert("done")
-        $("#dragImage").attr("src", data[0].showImageStandardSmall);
+
+
+    var request = $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        url: 'http://localhost:3002/deals',
+        data: JSON.stringify({
+            username: "morgan"
+        }),
+        crossDomain: true
     });
+
+    request.done(function(data) {
+        currentCoupons = data;
+        console.log("Got the dataa");
+    });
+
+    request.fail(function(jqXHR, textStatus) {
+        console.log("request error: " + textStatus);
+    });
+
+
+
+    // $.post("http://localhost:3002/deals", {
+    //     username: "morgan"
+    // }).done(function(data) {
+    //     currentCoupons = data;
+    //     console.log("Got the dataa");
+    // });
 }
 
 
@@ -77,5 +105,5 @@ CouponLoader.prototype.checkThreshold = function() {
 
 }
 
-var kingCoup = new CouponLoader();
+kingCoup = new CouponLoader();
 kingCoup.init();
