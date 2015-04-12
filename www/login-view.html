@@ -50,19 +50,20 @@
                         console.log(res[0]);
                         var data = res[0].deals;
                         
-                       var list = document.createElement('div');
-                       list.setAttribute('id', 'people');
-
+                       // var list = document.createElement('div');
+                       // list.setAttribute('id', 'people');
+var strVar = "";
                         for(var i = 0; i < data.length; i++) {
                             // Create the list item:
                             var imgToShow = data[i].showImageStandardBig;
                             var dealTitle = data[i].dealTitle;
                             var dealInfo = data[i].dealInfo.substring(0, 20) + '...';
-                            var strVar = "";
+                            
                                 strVar += "<coupon-shell width='400px' height='400px'><couponImage><img = src='" + imgToShow + "'\/><\/couponImage><couponTitle>" + dealTitle + "<\/couponTitle><couponDetails>" + dealInfo + "<\/couponDetails><\/coupon-shell>";
-                                $('#imageContainer').html(strVar);
+                                
                         }
-                    document.getElementById('couponsList').appendChild(list);
+                        $('#couponsList').html(strVar);
+                    //document.getElementById('couponsList').appendChild(list);
                     });
 
 
