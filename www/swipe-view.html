@@ -98,18 +98,8 @@
             <core-header-panel navigation flex mode="seamed" draggable="false">
                 <core-toolbar id="core_toolbar">Tools</core-toolbar>
                 <core-menu theme="core-light-theme">
-                    <form>
-                        <div class="ui-field-contain">
-                            <label for="slider">Radius:</label>
-                            <input type="range" name="slider" id="slider" min="0" max="100" value="50" >
-                            <p>Current Search Radius: <span id = "slider-value">50</span> mi</p>
-                        </div>
-                        <div class="ui-field-contain">
-                            <label for="sliderAdventure">How adventurous are you feeling?</label><br>
-                            <input type="range" name="sliderAdventure" id="sliderAdventure" min="10" max="30" value="20" step = "10">
-                            <p><span id = "sliderAdventure-value">Indiana Jones</span></p>
-                        </div>
-                    </form>
+
+                <content select="fizz"></content>
 
                 </core-menu>
             </core-header-panel>
@@ -143,8 +133,12 @@
     </template>
   <script>
     Polymer();
-    window.kingCoup = new CouponLoader();
-    window.kingCoup.init();
+
+
+
+$(document).ready(function() {
+   
+});
 
   </script>
     

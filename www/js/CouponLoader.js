@@ -5,7 +5,6 @@ endEvent = isTouchSupported ? 'touchend' : 'mouseup';
 
 function CouponLoader() {
     this.couponIndex = 0;
-    this.savedDeals = [];
 }
 
 CouponLoader.prototype.init = function() {
@@ -36,20 +35,29 @@ CouponLoader.prototype.init = function() {
         checkThreshold();
     });
 
-    $("#slider").on("input", function() {
-        document.getElementById("slider-value").innerHTML = this.value;
-    })
+    initRange = function() {
+        setTimeout(function() {}, 2000);
+        $("#slider").on("input", function() {
+            document.getElementById("slider-value").innerHTML = this.value;
+        });
+    }
 
-    $("#sliderAdventure").on("input", function() {
-        var currentVal = this.value;
-        if (currentVal == 10) {
-            document.getElementById("sliderAdventure-value").innerHTML = "Scooby Doo & Shaggy";
-        } else if (currentVal == 20) {
-            document.getElementById("sliderAdventure-value").innerHTML = "Indiana Jones";
-        } else if (currentVal == 30) {
-            document.getElementById("sliderAdventure-value").innerHTML = "Chuck Norris";
-        }
-    });
+    initSlider = function() {
+        setTimeout(function() {}, 1500);
+        $("#sliderAdventure").on("input", function() {
+            var currentVal = this.value;
+            if (currentVal == 10) {
+                document.getElementById("sliderAdventure-value").innerHTML = "Scooby Doo & Shaggy";
+            } else if (currentVal == 20) {
+                document.getElementById("sliderAdventure-value").innerHTML = "Indiana Jones";
+            } else if (currentVal == 30) {
+                document.getElementById("sliderAdventure-value").innerHTML = "Chuck Norris";
+            }
+        });
+
+    }
+
+
 
     $("#dragImage").on(endEvent, function() {
         console.log('ending')
@@ -64,15 +72,13 @@ CouponLoader.prototype.next = function(decision) {
     //Update the swiped attribute of the last coupon
     if (decision == "keep") {
         window.currentCoupons[this.couponIndex].swiped = true;
-        console.log(window.currentCoupons[this.couponIndex]);
     } else if (decision == "discard") {
         window.currentCoupons[this.couponIndex].swiped = false;
-        console.log(window.currentCoupons[this.couponIndex]);
     }
 
     this.couponIndex++; //increment to the next coupon
 
-    if (this.couponIndex == window.currentCoupons.length - 1) //Out of coupons
+    if (this.couponIndex == window.currentCoupons.length) //Out of coupons
         updateUser();
 
     console.log(this.couponIndex);
@@ -103,7 +109,7 @@ CouponLoader.prototype.getCoupons = function() {
         username: "morgan"
     }).done(function(data) {
         window.currentCoupons = data;
-        console.log("Got the dataa");
+        console.log(data);
     });
 }
 

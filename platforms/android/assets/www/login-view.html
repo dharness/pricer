@@ -12,7 +12,25 @@
             <script type="text/javascript">
                 app.initialize();
                 function erase() {
-                    $('#theBody').html("<swipe-view><image-container id='imageContainer'></image-container></swipe-view>");
+
+                    var strVar="";
+                    strVar += "                    <form>";
+                    strVar += "                        <div class=\"ui-field-contain\">";
+                    strVar += "                            <label for=\"slider\">Radius:<\/label>";
+                    strVar += "                            <input type=\"range\" name=\"slider\" id=\"slider\" min=\"0\" max=\"100\" value=\"50\" >";
+                    strVar += "                            <p>Current Search Radius: <span id = \"slider-value\">50<\/span> mi<\/p>";
+                    strVar += "                        <\/div>";
+                    strVar += "                        <div class=\"ui-field-contain\">";
+                    strVar += "                            <label for=\"sliderAdventure\">How adventurous are you feeling?<\/label><br>";
+                    strVar += "                            <input type=\"range\" name=\"sliderAdventure\" id=\"sliderAdventure\" min=\"10\" max=\"30\" value=\"20\" step = \"10\">";
+                    strVar += "                            <p><span id = \"sliderAdventure-value\">Indiana Jones<\/span><\/p>";
+                    strVar += "                        <\/div>";
+                    strVar += "                    <\/form>";
+
+
+                    $('#theBody').html("<swipe-view><fizz>" + strVar + "</fizz><image-container id='imageContainer'></image-container></swipe-view>");
+                    initRange();
+                    initSlider();
                 }
                 function moveToCV(){
                     $('#theBody').html("<coupons-view></coupons-view>");
