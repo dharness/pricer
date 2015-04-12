@@ -1,12 +1,13 @@
 <polymer-element name="login-view">
   <template>
 
-        <div class="app">
 
-            <h1>Apache Cordova</h1>
+  <!-- <link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'> -->
+
+    <link rel="stylesheet" href="css/style.css">
+        <div class="app">
+            <!-- <h1>Apache Cordova</h1> -->
             <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
             </div>
 
             <script type="text/javascript">
@@ -41,7 +42,26 @@
                     $('#theBody').html(strVar);
                 }
             </script>
-            <button onclick="erase()">LOGIN</button>
+
+            <body>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+              <div class="login-card">
+                <center>
+                    <img src='logo.png' height='250px' width='250px'></img>
+                </center>
+                
+                <h1>Log-in</h1><br>
+                <input type="text" name="user" placeholder="Username">
+                <input type="submit" name="login" class="login login-submit" onclick="erase()">
+            </div>
+
+<!--             <button onclick="erase()">LOGIN</button> -->
+           
+
 <!--             <div class="event listening button" onclick="login();">Login with Facebook</div>
 
 
@@ -102,6 +122,7 @@
             //         function (response) { alert(JSON.stringify(response)) },
             //         function (response) { alert(JSON.stringify(response)) });
             // }
+
         </script>
 
 
