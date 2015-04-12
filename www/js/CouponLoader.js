@@ -1,34 +1,77 @@
-var isTouchSupported = 'ontouchstart' in window;
-var startEvent = isTouchSupported ? 'touchstart' : 'mousedown';
-var moveEvent = isTouchSupported ? 'touchmove' : 'mousemove';
-var endEvent = isTouchSupported ? 'touchend' : 'mouseup';
+isTouchSupported = 'ontouchstart' in window;
+startEvent = isTouchSupported ? 'touchstart' : 'mousedown';
+moveEvent = isTouchSupported ? 'touchmove' : 'mousemove';
+endEvent = isTouchSupported ? 'touchend' : 'mouseup';
 
-var x;
-var y;
+var CouponLoader = function() {}
 
-var down = {
-    x: 0,
-    y: 0
+CouponLoader.prototype.init = function() {
+
+    alert('init')
+    var down = {
+        x: 0,
+        y: 0
+    }
+
+    $("#dragImage").on(startEvent, function(e) {
+        down.x = e.originalEvent.touches[0].pageX;
+        down.y = e.originalEvent.touches[0].pageY;
+
+        dX = $("#dragImage").position().left - down.x;
+        dY = $("#dragImage").position().top - down.y;
+    });
+
+    $("#dragImage").on(moveEvent, function(e) {
+        $("#dragImage").css({
+            position: "absolute",
+            marginLeft: 0,
+            marginTop: 0,
+            left: e.originalEvent.touches[0].pageX + dX,
+            top: e.originalEvent.touches[0].pageY + dY
+        });
+
+        checkThreshold();
+    });
+
+    $("#dragImage").on(endEvent, function() {
+        console.log('ending')
+    });
+
+    this.getCoupons();
 }
 
-$("#dragImage").on(startEvent, function(e) {
-    down.x = e.originalEvent.touches[0].pageX;
-    down.y = e.originalEvent.touches[0].pageY;
+CouponLoader.prototype.next = function() {
+    var strVar = "";
+    strVar += "<img id=\"dragImage\" width=\"300\" height=\"200\" src=\"resources\/images\/sampleCoupon.png\">";
 
-    dX = $("#dragImage").position().left - down.x;
-    dY = $("#dragImage").position().top - down.y;
-});
+    $('#imageContainer').html(strVar);
+}
 
-$("#dragImage").on(moveEvent, function(e) {
-    $("#dragImage").css({
-        position: "absolute",
-        marginLeft: 0,
-        marginTop: 0,
-        left: e.originalEvent.touches[0].pageX + dX,
-        top: e.originalEvent.touches[0].pageY + dY
+CouponLoader.prototype.getCoupons = function() {
+    $.get("http://localhost:3002/deals", function(data, status) {
+        window.coupons = data;
+        alert("done")
+        $("#dragImage").attr("src", data[0].showImageStandardSmall);
     });
-});
+}
 
-$("#dragImage").on(endEvent, function() {
-    console.log('ending')
-});
+
+CouponLoader.prototype.checkThreshold = function() {
+    var tHold = screen.width / 4;
+
+    var centerX = $("#dragImage").position().left + $("#dragImage").attr("width") / 2;
+    console.log(centerX);
+
+    // get the width of the screen and compare
+    if (centerX < tHold) {
+        alert('Swiped left');
+        this.next();
+    } else if (centerX > screen.width - tHold) {
+        alert('Swiped right');
+        this.next();
+    }
+
+}
+
+var kingCoup = new CouponLoader();
+kingCoup.init();
