@@ -106,6 +106,7 @@ function updateUser() {
     }).done(function(data) {
         console.log(data);
     });
+    callback();
 
 }
 
