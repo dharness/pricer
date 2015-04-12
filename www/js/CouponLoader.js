@@ -95,9 +95,11 @@ CouponLoader.prototype.next = function(decision) {
     if (this.couponIndex == window.currentCoupons.length) { //Out of coupons
         updateUser(function(callback) {
             window.kingCoup.couponIndex = 0;
-            window.kingCoup.getCoupons();
+            window.kingCoup.getCoupons(function(cb) {
+                if (window.currentCoupons.length == 0)
+                    alert("No more coupons to swipe! Please increase your radius, or get more adventurous :)");
+            });
         });
-
     }
 }
 
@@ -114,12 +116,14 @@ function updateUser(callback) {
 }
 
 
-CouponLoader.prototype.getCoupons = function() {
+CouponLoader.prototype.getCoupons = function(callback) {
     $.post("http://dylandjoegotosanfrancisco.com:3002/deals", {
         username: window.username, //"morgan"
     }).done(function(data) {
         window.currentCoupons = data;
         console.log(data);
+        if (callback)
+            callback();
     });
 }
 
