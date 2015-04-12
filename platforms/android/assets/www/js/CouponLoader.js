@@ -105,8 +105,9 @@ function updateUser() {
         deals: window.currentCoupons
     }).done(function(data) {
         console.log(data);
+        callback();
     });
-    callback();
+
 
 }
 
