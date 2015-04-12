@@ -1,10 +1,9 @@
 <polymer-element name="coupon-shell">
 	<template>
-<body>
 <div>
 	<section id='window-popup' width='100' height='100'>
-		<div id='people'>
-			<div class = 'person'>
+		<div id='people' style="margin-left:35px;">
+			<div class = 'person' >
 				<img = src='photo.jpg'/>
 				<span style="width:95%"><strong><h1>$25 Night Out with John Kirkley</h1></strong> <p>A young atheist bachelor on the loose, looking for a good time with some wine. </p></span>
 			</div>
@@ -13,19 +12,17 @@
 </div>
 
 <style>
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600);
-@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+/*@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);*/
 
 
 p{
 	font-size: 60%;
 	line-height: 95%;
-}
-[class*="fontawesome-"]:before {
-  font-family: 'FontAwesome', sans-serif;
+	font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
 }
 
-$bg: #eee;
+
 $phoneDetails: #d3d3d3;
 $phoneColor: #dfdfdf;
 $phoneWidth: 320px;
@@ -46,7 +43,7 @@ body {
 
 #people, .person {
   width: 250px;
-  height: 265px;
+  height: 290px;
 }
 
 #people {
@@ -59,8 +56,8 @@ body {
   background-color: transparent;
   border-radius: 5px;
   overflow: hidden;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
   transition: all .1s linear;
   &:nth-child(1){
     z-index: 5;
@@ -114,15 +111,12 @@ body {
 }
 
 
-
-
-
 h1 {
-
+	font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
 	font-size: 90%;
 	line-height: 95%;
   	font-weight: 400;
-  	text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  	text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
   	text-align: center;
  	margin: 0px;
  	padding: 5px;
@@ -130,8 +124,9 @@ h1 {
 }
 
 h3 {
+	font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
   font-weight: 300;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
   margin-top: 15px;
   width: 100%;
   padding: 8px 0 8px 0;
@@ -139,20 +134,10 @@ h3 {
 }
 
 
-#window-popup{
-	height:400px;
-    width:400px;
-}
-
-#coupon-image{
-	height: 300px;
-	width: 300px;
-}
-
 
 </style>
 
-	<template>
+</template>
 <script type="text/javascript">
 Polymer();
 </script>
