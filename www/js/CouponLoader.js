@@ -87,6 +87,7 @@ CouponLoader.prototype.next = function(decision) {
 
 function updateUser() {
     console.log("Out of coupons!");
+    console.log(window.currentCoupons);
     $.post("http://dylandjoegotosanfrancisco.com:3002/updateUser", {
         username: "morgan",
         deals: window.currentCoupons
