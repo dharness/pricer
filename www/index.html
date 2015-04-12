@@ -52,7 +52,8 @@
                     facebookConnectPlugin.browserInit("360025844205214");
                 }
                 facebookConnectPlugin.login( ["email"], 
-                    function (response) { alert(JSON.stringify(response)) },
+                    function (response) {
+                    $.mobile.changePage( "../index23.html", { transition: "slideup", changeHash: false }); },
                     function (response) { alert(JSON.stringify(response)) });
             }
             
