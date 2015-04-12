@@ -33,6 +33,23 @@ CouponLoader.prototype.init = function() {
         checkThreshold();
     });
 
+    $("#slider").on("input", function() {
+        document.getElementById("slider-value").innerHTML = this.value;
+    })
+
+    $("#sliderAdventure").on("input", function() {
+        var currentVal = this.value;
+        if (currentVal == 10) {
+            document.getElementById("sliderAdventure-value").innerHTML = "Scooby Doo & Shaggy";
+        }
+        else if (currentVal == 20) {
+            document.getElementById("sliderAdventure-value").innerHTML = "Indiana Jones";
+        }
+        else if (currentVal == 30) {
+            document.getElementById("sliderAdventure-value").innerHTML = "Chuck Norris";
+        }
+    });
+
     $("#dragImage").on(endEvent, function() {
         console.log('ending')
     });
