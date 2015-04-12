@@ -33,7 +33,12 @@
                     initSlider();
                 }
                 function moveToCV(){
-                    $('#theBody').html("<coupons-view></coupons-view>");
+
+                    var data = [];
+
+                    var strVar="";
+                    strVar += "<coupons-view><list id='couponsList'><\/list><\/coupons-view>";
+                    $('#theBody').html(strVar);
                 }
             </script>
             <button onclick="erase()">LOGIN</button>
