@@ -71,34 +71,44 @@ CouponLoader.prototype.next = function(decision) {
 
     //Update the swiped attribute of the last coupon
     if (decision == "keep") {
-        window.currentCoupons[this.couponIndex].swiped = true;
+        window.currentCoupons[this.couponIndex]['swiped'] = true;
     } else if (decision == "discard") {
-        window.currentCoupons[this.couponIndex].swiped = false;
+        window.currentCoupons[this.couponIndex]['swiped'] = false;
     }
 
-    this.couponIndex++; //increment to the next coupon
 
-    if (this.couponIndex == window.currentCoupons.length) //Out of coupons
-        updateUser();
 
-    console.log(this.couponIndex);
+
+
+    //console.log(this.couponIndex);
     // console.log(currentCoupons);
-    var imgToShow = window.currentCoupons[window.kingCoup.count].showImageStandardBig;
-    window.kingCoup.count++;
+    var imgToShow = window.currentCoupons[this.couponIndex].showImageStandardBig;
+    //window.kingCoup.count++;
     // console.log("data", window.currentCoupons)
     // console.log("img ", imgToShow)
     var strVar = "";
     strVar += '<img id=\"dragImage\" width=\"300\" height=\"200\" src=\"' + imgToShow + '\">';
     $('#imageContainer').html(strVar);
+
+    this.couponIndex++; //increment to the next coupon
+
+    if (this.couponIndex == window.currentCoupons.length) { //Out of coupons
+        updateUser(function(callback) {
+            window.kingCoup.couponIndex = 0;
+            window.kingCoup.getCoupons();
+        });
+
+    }
 }
 
-function updateUser() {
+function updateUser(callback) {
     console.log("Out of coupons!");
     $.post("http://dylandjoegotosanfrancisco.com:3002/updateUser", {
         username: "morgan",
         deals: window.currentCoupons
     }).done(function(data) {
         console.log(data);
+        callback();
     });
 
 }
