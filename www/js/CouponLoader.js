@@ -3,15 +3,15 @@ startEvent = isTouchSupported ? 'touchstart' : 'mousedown';
 moveEvent = isTouchSupported ? 'touchmove' : 'mousemove';
 endEvent = isTouchSupported ? 'touchend' : 'mouseup';
 
-var CouponLoader = function() {}
+function CouponLoader() {}
 
 CouponLoader.prototype.init = function() {
 
     var down = {
-            x: 0,
-            y: 0
-        }
-        // kingCoup.count = 0;
+        x: 0,
+        y: 0
+    }
+    window.kingCoup.count = 0;
 
     $("#dragImage").on(startEvent, function(e) {
         down.x = e.originalEvent.touches[0].pageX;
@@ -52,27 +52,36 @@ CouponLoader.prototype.init = function() {
         console.log('ending')
     });
 
-    this.getCoupons();
+    window.kingCoup.getCoupons();
 }
 
 
 CouponLoader.prototype.next = function() {
+
+    updateSelectedCoupions();
     // console.log(currentCoupons);
-    var imgToShow = currentCoupons[kingCoup.count].showImageStandardBig;
-    kingCoup.count++;
+    var imgToShow = window.currentCoupons[window.kingCoup.count].showImageStandardBig;
+    window.kingCoup.count++;
+    console.log("data", window.currentCoupons)
+    console.log("img ", imgToShow)
     var strVar = "";
     strVar += '<img id=\"dragImage\" width=\"300\" height=\"200\" src=\"' + imgToShow + '\">';
 
-    $('#imageContainer').html(strVar);
+    window.mainImage.html(strVar);
 }
+
+function updateSelectedCoupions() {
+
+}
+
 
 CouponLoader.prototype.getCoupons = function() {
 
 
-    $.post("http://localhost:3002/deals", {
+    $.post("http://45.33.70.39:3002/deals", {
         username: "morgan"
     }).done(function(data) {
-        currentCoupons = data;
+        window.currentCoupons = data;
         console.log("Got the dataa");
     });
 }
@@ -95,4 +104,5 @@ CouponLoader.prototype.checkThreshold = function() {
 
 }
 
-console.log(CouponLoader);
+window.kingCoup = new CouponLoader();
+window.kingCoup.init();
