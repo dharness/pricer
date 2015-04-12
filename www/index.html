@@ -24,6 +24,8 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://code.jquery.com/mobile/git/jquery.mobile-git.js"></script>
         <title>Hello World</title>
     </head>
     <body>
@@ -48,13 +50,20 @@
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript">
             var login = function () {
-                if (window.cordova.platformId == "browser") {
+                /*if (window.cordova.platformId == "browser") {
                     facebookConnectPlugin.browserInit("360025844205214");
-                }
-                facebookConnectPlugin.login( ["email"], 
-                    function (response) {
-                    $.mobile.changePage( "../index23.html", { transition: "slideup", changeHash: false }); },
-                    function (response) { alert(JSON.stringify(response)) });
+                }*/
+                //facebookConnectPlugin.login( ["email"], 
+                    //function (response) {
+                    setTimeout(function () {
+                        $(':mobile-pagecontainer').pagecontainer('change', 'index23.html', {
+                            transition: 'flip',
+                            changeHash: false,
+                            reverse: true,
+                            showLoadMsg: true
+                        });
+                    }, 1000);
+                    //function (response) { alert(JSON.stringify(response)) });
             }
             
             var showDialog = function () { 
