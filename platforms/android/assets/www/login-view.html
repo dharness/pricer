@@ -1,12 +1,13 @@
 <polymer-element name="login-view">
   <template>
 
-        <div class="app">
 
-            <h1>Apache Cordova</h1>
+  <!-- <link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'> -->
+
+    <link rel="stylesheet" href="css/style.css">
+        <div class="app">
+            <!-- <h1>Apache Cordova</h1> -->
             <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
             </div>
 
             <script type="text/javascript">
@@ -33,10 +34,63 @@
                     initSlider();
                 }
                 function moveToCV(){
-                    $('#theBody').html("<coupons-view></coupons-view>");
+
+                    var data = ["3","3e","3gg","3csd","3gw","399"]
+
+                var strVar="";
+                    strVar += "<coupons-view><list id='couponsList'><\/list><\/coupons-view>";
+                    $('#theBody').html(strVar);
+
+                    setTimeout(function(){
+                    $.post("http://dylandjoegotosanfrancisco.com:3002/getSavedDeals", {
+                        username: "morgan"
+                    }).done(function(res) {
+
+
+                        console.log(res[0]);
+                        var data = res[0].deals;
+                        console.log(data)
+                        
+                   var list = document.createElement('ul');
+
+                    for(var i = 0; i < data.length; i++) {
+                        // Create the list item:
+                        var item = document.createElement('li');
+
+                        // Set its contents:
+                        // item.appendChild(document.createTextNode(data[i].dealTitle));
+                        item.appendChild(document.createTextNode(data[i].dealTitle));
+
+                        // Add it to the list:
+                        list.appendChild(item);
+                    }
+                    document.getElementById('couponsList').appendChild(list);
+                    });
+
+
+                    }, 0);
                 }
             </script>
-            <button onclick="erase()">LOGIN</button>
+
+            <body>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+              <div class="login-card">
+                <center>
+                    <img src='logo.png' height='250px' width='250px'></img>
+                </center>
+                
+                <h1>Log-in</h1><br>
+                <input type="text" name="user" placeholder="Username">
+                <input type="submit" name="login" class="login login-submit" onclick="erase();">
+            </div>
+
+<!--             <button onclick="erase()">LOGIN</button> -->
+           
+
 <!--             <div class="event listening button" onclick="login();">Login with Facebook</div>
 
 
@@ -97,6 +151,7 @@
             //         function (response) { alert(JSON.stringify(response)) },
             //         function (response) { alert(JSON.stringify(response)) });
             // }
+
         </script>
 
 
