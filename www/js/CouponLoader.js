@@ -78,7 +78,7 @@ function updateSelectedCoupions() {
 CouponLoader.prototype.getCoupons = function() {
 
 
-    $.post("http://localhost:3002/deals", {
+    $.post("http://45.33.70.39:3002/deals", {
         username: "morgan"
     }).done(function(data) {
         window.currentCoupons = data;
