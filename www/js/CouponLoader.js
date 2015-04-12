@@ -63,7 +63,7 @@ CouponLoader.prototype.init = function() {
         console.log('ending')
     });
 
-    window.kingCoup.getCoupons();
+
 }
 
 
@@ -76,20 +76,25 @@ CouponLoader.prototype.next = function(decision) {
         window.currentCoupons[this.couponIndex].swiped = false;
     }
 
-    this.couponIndex++; //increment to the next coupon
-
-    if (this.couponIndex == window.currentCoupons.length) //Out of coupons
-        updateUser();
 
     console.log(this.couponIndex);
-    // console.log(currentCoupons);
-    var imgToShow = window.currentCoupons[window.kingCoup.count].showImageStandardBig;
-    window.kingCoup.count++;
-    // console.log("data", window.currentCoupons)
-    // console.log("img ", imgToShow)
+    var imgToShow = window.currentCoupons[window.kingCoup.couponIndex].showImageStandardBig;
     var strVar = "";
     strVar += "<coupon-shell width='400px' height='400px'><couponImage><img = src='" + imgToShow + "'\/><\/couponImage><\/coupon-shell>";
     $('#imageContainer').html(strVar);
+
+    this.couponIndex++; //increment to the next coupon
+
+    if (this.couponIndex == window.currentCoupons.length) { //Out of coupons
+        updateUser(function(callback) {
+            window.kingCoup.couponIndex = 0;
+            window.kingCoup.getCoupons(function(cb) {
+                if (window.currentCoupons.length == 0)
+                    alert("No more coupons to swipe! Please increase your radius, or get more adventurous :)");
+            });
+        });
+    }
+
 }
 
 function updateUser() {
@@ -104,12 +109,14 @@ function updateUser() {
 }
 
 
-CouponLoader.prototype.getCoupons = function() {
+CouponLoader.prototype.getCoupons = function(callback) {
     $.post("http://dylandjoegotosanfrancisco.com:3002/deals", {
         username: "morgan"
     }).done(function(data) {
         window.currentCoupons = data;
         console.log(data);
+        if (callback)
+            callback();
     });
 }
 
