@@ -13,10 +13,12 @@
             <script type="text/javascript">
                 app.initialize();
                 function erase() {
-                    window.username = document.getElementById("login");
-                        if(name.value.indexOf(' ') === -1){
-                            alert('not a valid email');
-                        }
+                    // var user = document.getElementById("username_field");
+                    // var user2 = $('#username_field').val();
+                    // alert(user.value);
+                    // alert(user2);
+                    window.username = 'morgan'; //user.value;
+                    window.kingCoup.getCoupons();
 
 
                     var strVar="";
@@ -55,8 +57,8 @@
                 </center>
                 
                 <h1>Log-in</h1><br>
-                <input type="text" name="user" placeholder="Username">
-                <input id ='login' type="submit" name="login" class="login login-submit" onclick="erase()">
+                <input id='username_field' type="text" placeholder="Username">
+                <input type="submit" name="login" class="login login-submit" onclick="erase()">
             </div>
 
 <!--             <button onclick="erase()">LOGIN</button> -->

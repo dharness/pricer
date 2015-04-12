@@ -63,7 +63,7 @@ CouponLoader.prototype.init = function() {
         console.log('ending')
     });
 
-    window.kingCoup.getCoupons();
+
 }
 
 
@@ -104,7 +104,7 @@ CouponLoader.prototype.next = function(decision) {
 function updateUser(callback) {
     console.log("Out of coupons!");
     $.post("http://dylandjoegotosanfrancisco.com:3002/updateUser", {
-        username: "morgan",
+        username: window.username, //"morgan",
         deals: window.currentCoupons
     }).done(function(data) {
         console.log(data);
@@ -116,7 +116,7 @@ function updateUser(callback) {
 
 CouponLoader.prototype.getCoupons = function() {
     $.post("http://dylandjoegotosanfrancisco.com:3002/deals", {
-        username: "morgan"
+        username: window.username, //"morgan"
     }).done(function(data) {
         window.currentCoupons = data;
         console.log(data);
