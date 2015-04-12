@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>simple-scroller</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0">
+    <script src="../webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="simple-scroller.html">
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        -webkit-tap-highlight-color: transparent;
+      }
+    </style>
+  </head>
+
+  <body fullbleed unresolved>
+
+    <demo-scroller></demo-scroller>
+
+    <polymer-element name="demo-scroller">
+      <template>
+        
+        <simple-scroller>
+          <template repeat="{{data}}">
+            <div>{{name}}</div>
+          </template>
+        </simple-scroller>
+
+      </template>
+
+      <script>
+        Polymer({
+          ready: function () {
+            var data = this.data = [];
+
+            for (var i = 0, len = 500; i < len; i++) {
+              data.push({
+                name: 'Item # '+i
+              });
+            }
+          }
+        });
+      </script>
+    </polymer-element>
+
+  </body>
+</html>

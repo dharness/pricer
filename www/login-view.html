@@ -12,7 +12,10 @@
             <script type="text/javascript">
                 app.initialize();
                 function erase() {
-                    $('#theBody').html("<swipe-view></swipe-view>");
+                    $('#theBody').html("<swipe-view><image-container id='imageContainer'></image-container></swipe-view>");
+                }
+                function moveToCV(){
+                    $('#theBody').html("<coupons-view></coupons-view>");
                 }
             </script>
             <button onclick="erase()">LOGIN</button>

@@ -3,7 +3,10 @@ startEvent = isTouchSupported ? 'touchstart' : 'mousedown';
 moveEvent = isTouchSupported ? 'touchmove' : 'mousemove';
 endEvent = isTouchSupported ? 'touchend' : 'mouseup';
 
-var CouponLoader = function() {}
+function CouponLoader() {
+    this.couponIndex = 0;
+    this.savedDeals = [];
+}
 
 CouponLoader.prototype.init = function() {
 
@@ -56,23 +59,50 @@ CouponLoader.prototype.init = function() {
 }
 
 
-CouponLoader.prototype.next = function() {
+CouponLoader.prototype.next = function(decision) {
+
+    //Update the swiped attribute of the last coupon
+    if (decision == "keep") {
+        window.currentCoupons[this.couponIndex].swiped = true;
+        console.log(window.currentCoupons[this.couponIndex]);
+    } else if (decision == "discard") {
+        window.currentCoupons[this.couponIndex].swiped = false;
+        console.log(window.currentCoupons[this.couponIndex]);
+    }
+
+    this.couponIndex++; //increment to the next coupon
+
+    if (this.couponIndex == window.currentCoupons.length - 1) //Out of coupons
+        updateUser();
+
+    console.log(this.couponIndex);
     // console.log(currentCoupons);
-    var imgToShow = currentCoupons[window.kingCoup.count].showImageStandardBig;
+    var imgToShow = window.currentCoupons[window.kingCoup.count].showImageStandardBig;
     window.kingCoup.count++;
+    // console.log("data", window.currentCoupons)
+    // console.log("img ", imgToShow)
     var strVar = "";
     strVar += '<img id=\"dragImage\" width=\"300\" height=\"200\" src=\"' + imgToShow + '\">';
-
     $('#imageContainer').html(strVar);
 }
 
+function updateUser() {
+    console.log("Out of coupons!");
+    $.post("http://dylandjoegotosanfrancisco.com:3002/updateUser", {
+        username: "morgan",
+        deals: window.currentCoupons
+    }).done(function(data) {
+        console.log(data);
+    });
+
+}
+
+
 CouponLoader.prototype.getCoupons = function() {
-
-
-    $.post("http://localhost:3002/deals", {
+    $.post("http://dylandjoegotosanfrancisco.com:3002/deals", {
         username: "morgan"
     }).done(function(data) {
-        currentCoupons = data;
+        window.currentCoupons = data;
         console.log("Got the dataa");
     });
 }
