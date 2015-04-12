@@ -1,0 +1,21 @@
+
+
+<script type="text/javascript">
+
+		var cl = document.querySelector('#my-core-list');
+			cl.data = [{
+			    name: 'Elizabeth'
+			}, {
+			    name: 'Jane'
+			}, {
+			    name: 'Kitty'
+			}];
+
+
+</script>
+
+<simple-list data="{{data}}" id="mySimpleList" height="80">
+  <template>
+    <div class="item {{ {selected: selected} | tokenList }}"> Item {{model.name}}</div>
+  </template>
+</simple-list>

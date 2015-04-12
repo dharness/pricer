@@ -3,7 +3,7 @@ startEvent = isTouchSupported ? 'touchstart' : 'mousedown';
 moveEvent = isTouchSupported ? 'touchmove' : 'mousemove';
 endEvent = isTouchSupported ? 'touchend' : 'mouseup';
 
-var CouponLoader = function() {}
+function CouponLoader() {}
 
 CouponLoader.prototype.init = function() {
 
@@ -57,22 +57,31 @@ CouponLoader.prototype.init = function() {
 
 
 CouponLoader.prototype.next = function() {
+
+    updateSelectedCoupions();
     // console.log(currentCoupons);
-    var imgToShow = currentCoupons[window.kingCoup.count].showImageStandardBig;
+    var imgToShow = window.currentCoupons[window.kingCoup.count].showImageStandardBig;
     window.kingCoup.count++;
+    console.log("data", window.currentCoupons)
+    console.log("img ", imgToShow)
     var strVar = "";
     strVar += '<img id=\"dragImage\" width=\"300\" height=\"200\" src=\"' + imgToShow + '\">';
 
     $('#imageContainer').html(strVar);
 }
 
+function updateSelectedCoupions() {
+
+}
+
+
 CouponLoader.prototype.getCoupons = function() {
 
 
-    $.post("http://localhost:3002/deals", {
+    $.post("http://45.33.70.39:3002/deals", {
         username: "morgan"
     }).done(function(data) {
-        currentCoupons = data;
+        window.currentCoupons = data;
         console.log("Got the dataa");
     });
 }
