@@ -42,9 +42,19 @@
                 bottom: 0;
                 left: 0;
             }
+
+            core-scaffold::shadow core-toolbar {
+  background: #EC8C50;
+  color: black;
+}
+
+core-scaffold::shadow core-header-panel {
+  background: #FFF;
+  color: white;
+}
             #core_toolbar {
                 color: rgb(255, 255, 255);
-                background-color: rgb(79, 125, 201);
+                background-color: #FF9857;
             }
             .imageContainer {
                 border-top-left-radius: 2px;
@@ -108,12 +118,12 @@
             </div>
             
 
-            <div id="imageContainer">
+            <div id="imageContainer" width="400px" height="400px">
                 <!-- <img id="dragImage" width="300" height="250" src="resources/images/sampleCoupon.png"> -->
                 <div class="wow">
-                    <div class="wow bounceInUp">
-                        <coupon-shell width="300" height="250"></coupon-shell>
-                    </div>
+                    <center>
+                        <coupon-shell width="400px" height="400px"></coupon-shell>
+                    </center>
                 </div>  
             </div>
 
@@ -122,9 +132,9 @@
             </div> -->
             <content select="image-container"></content>
 
-            <paper-fab id="clip" style="position: absolute; top: 275px; left: 200px; background-color: #57A549;" icon="sketch-icons:scissors" onclick="kingCoup.next('keep')"></paper-fab>
+            <paper-fab id="clip" style="position: absolute; top: 450px; left: 230px; background-color: #57A549;" icon="sketch-icons:scissors" onclick="kingCoup.next('keep')"></paper-fab>
             
-            <paper-fab id="discard" style="position: absolute; top: 275px; left: 50px" icon="delete" onclick="window.kingCoup.next('discard')"></paper-fab>
+            <paper-fab id="discard" style="position: absolute; top: 450px; left: 80px" icon="delete" onclick="window.kingCoup.next('discard')"></paper-fab>
 
             <paper-toast id="toast1" text="It was junk anyway!"></paper-toast>
         </core-scaffold>

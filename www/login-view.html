@@ -5,7 +5,7 @@
   <!-- <link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'> -->
 
     <link rel="stylesheet" href="css/style.css">
-        <div class="app">
+        <div class="app" width='500px' height='700px'>
             <!-- <h1>Apache Cordova</h1> -->
             <div id="deviceready" class="blink">
             </div>
@@ -13,6 +13,13 @@
             <script type="text/javascript">
                 app.initialize();
                 function erase() {
+                    // var user = document.getElementById("username_field");
+                    // var user2 = $('#username_field').val();
+                    // alert(user.value);
+                    // alert(user2);
+                    window.username = 'morgan'; //user.value;
+                    window.kingCoup.getCoupons();
+
 
                     var strVar="";
                     strVar += "                    <form>";
@@ -84,73 +91,16 @@
                 </center>
                 
                 <h1>Log-in</h1><br>
-                <input type="text" name="user" id="uName" placeholder="Username">
-                <input type="submit" name="login" class="login login-submit" onclick="erase(); alert(document.getElementsByName('user'))">
+                <input id='username_field' type="text" placeholder="Username">
+                <input type="submit" name="login" class="login login-submit" onclick="erase()">
             </div>
 
-<!--             <button onclick="erase()">LOGIN</button> -->
-           
-
-<!--             <div class="event listening button" onclick="login();">Login with Facebook</div>
-
-
- --><!--             <div class="event listening button" onclick="showDialog();">Show Dialog with Facebook</div>
-            <div class="event listening button" onclick="apiTest();">Test API with Facebook</div>
-            <div class="event listening button" onclick="getAccessToken();">Get access token with Facebook</div>
-            <div class="event listening button" onclick="getStatus();">Get login status with Facebook</div>
-            <div class="event listening button" onclick="logout();">Logout with Facebook</div> -->
         </div>
 
 
         <div id="fb-root"></div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript">
-            // var login = function () {
-            //     /*if (window.cordova.platformId == "browser") {
-            //         facebookConnectPlugin.browserInit("360025844205214");
-            //     }*/
-            //     //facebookConnectPlugin.login( ["email"], 
-            //         //function (response) {
-            //         setTimeout(function () {
-            //             $(':mobile-pagecontainer').pagecontainer('change', 'indexdylan.html', {
-            //                 transition: 'flip',
-            //                 changeHash: false,
-            //                 reverse: true,
-            //                 showLoadMsg: true
-            //             });
-            //         }, 1000);
-            //         //function (response) { alert(JSON.stringify(response)) });
-            // }
-            
-            // var showDialog = function () { 
-            //     facebookConnectPlugin.showDialog( { method: "feed" }, 
-            //         function (response) { alert(JSON.stringify(response)) },
-            //         function (response) { alert(JSON.stringify(response)) });
-            // }
-            
-            // var apiTest = function () { 
-            //     facebookConnectPlugin.api( "me/?fields=id,email", ["user_birthday"],
-            //         function (response) { alert(JSON.stringify(response)) },
-            //         function (response) { alert(JSON.stringify(response)) }); 
-            // }
-
-            // var getAccessToken = function () { 
-            //     facebookConnectPlugin.getAccessToken( 
-            //         function (response) { alert(JSON.stringify(response)) },
-            //         function (response) { alert(JSON.stringify(response)) });
-            // }
-            
-            // var getStatus = function () { 
-            //     facebookConnectPlugin.getLoginStatus( 
-            //         function (response) { alert(JSON.stringify(response)) },
-            //         function (response) { alert(JSON.stringify(response)) });
-            // }
-
-            // var logout = function () { 
-            //     facebookConnectPlugin.logout( 
-            //         function (response) { alert(JSON.stringify(response)) },
-            //         function (response) { alert(JSON.stringify(response)) });
-            // }
 
         </script>
 
