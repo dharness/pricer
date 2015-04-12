@@ -73,9 +73,11 @@ CouponLoader.prototype.next = function(decision) {
     } else if (decision == "discard") {
         window.currentCoupons[this.couponIndex].swiped = false;
     }
-    this.couponIndex++; //increment to the next coupon
+
 
     this.loadCurrent();
+    //increment to the next coupon
+    this.couponIndex++;
 
 }
 
