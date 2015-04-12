@@ -37,6 +37,22 @@ CouponLoader.prototype.init = function() {
         document.getElementById("slider-value").innerHTML = this.value;
     })
 
+<<<<<<< HEAD
+=======
+    $("#sliderAdventure").on("input", function() {
+        var currentVal = this.value;
+        if (currentVal == 10) {
+            document.getElementById("sliderAdventure-value").innerHTML = "Scooby Doo & Shaggy";
+        }
+        else if (currentVal == 20) {
+            document.getElementById("sliderAdventure-value").innerHTML = "Indiana Jones";
+        }
+        else if (currentVal == 30) {
+            document.getElementById("sliderAdventure-value").innerHTML = "Chuck Norris";
+        }
+    });
+
+>>>>>>> b685537dd421f6ee1163b1a47258afca7c2b5a8d
     $("#dragImage").on(endEvent, function() {
         console.log('ending')
     });
