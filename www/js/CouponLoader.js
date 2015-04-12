@@ -106,6 +106,8 @@ CouponLoader.prototype.loadCurrent = function() {
 }
 
 function updateUser(callback) {
+
+
     console.log("Out of coupons!");
     $.post("http://dylandjoegotosanfrancisco.com:3002/updateUser", {
         username: "morgan",

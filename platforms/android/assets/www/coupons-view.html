@@ -8,45 +8,18 @@
 
     <template>
     <style>    
-      :host {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        box-sizing: border-box;
-      }
-      #core_ajax {
-        left: 170px;
-        top: 330px;
-        position: absolute;
-      }
-      #core_scroll_header_panel {
-        width: 380px;
-        height: 460px;
-        left: 120px;
-        top: 120px;
-        position: absolute;
-      }
-      #core_toolbar {
-        color: rgb(241, 241, 241);
-        fill: rgb(241, 241, 241);
-        background-color: rgb(66, 133, 244);
-      }
-      #section {
-        /*height: 5000px;*/
-        background: linear-gradient(rgb(214, 227, 231), rgb(173, 216, 230));
-      }
+     
     </style>
+
     <core-ajax handleas="json" method="GET" id="core_ajax" hidden></core-ajax>
     <core-scroll-header-panel headermargin="128" condenses headerheight="192" id="core_scroll_header_panel">
       <core-toolbar id="core_toolbar" class="tall">
-        <core-icon-button icon="arrow-back" id="core_icon_button"></core-icon-button>
+        <core-icon-button icon="arrow-back" id="core_icon_button" onClick="erase()"></core-icon-button>
         <div id="div" flex></div>
-        <core-icon-button icon="search" id="core_icon_button1"></core-icon-button>
-        <core-icon-button icon="more-vert" id="core_icon_button2"></core-icon-button>
-        <div id="div1" class="bottom indent">Title</div>
+        <div id="div1" class="bottom indent">My Coupons</div>
       </core-toolbar>
       <section id="section" content>
-      	
+      	<paper-spinner class="blue" role="progressbar" aria-label="loading" active="" style="position: absolute; top: 250px; left: 175px"></paper-spinner>
       	<content select="list"></content>
 
       </section>
@@ -56,6 +29,10 @@
 
 <script>
 Polymer();
+
+function movetoSwipe() {
+  $('#theBody').html('');
+}
 </script>
 
 </polymer-element>

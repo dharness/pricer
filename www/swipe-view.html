@@ -2,7 +2,6 @@
 <template>
 
     <head>
-        <title>Test Project</title>
         <meta name="viewport" content="user-scalable=no, initial-scale=1,
         maximum-scale=1, minimum-scale=1, width=device-width,
         height=device-height, target-densitydpi=device-dpi">
@@ -28,7 +27,7 @@
 
             core-scaffold::shadow core-toolbar {
               background: #EC8C50;
-              color: black;
+              color: white;
             }
 
             core-scaffold::shadow core-header-panel {
@@ -97,14 +96,16 @@
                 </core-menu>
             </core-header-panel>
             <div tool>Deal Mining
-            <paper-button raised id = "listCoups" style="background-color: #FFFFFF; color: #E88449" onclick="moveToCV()">My Coupons</paper=button>
+            <paper-button raised id = "listCoups" style="background-color: #FFFFFF; color: #E88449;position: absolute; top: 10px; left: 200px" onclick="moveToCV()">My Coupons</paper=button>
             </div>
             
 
             <div id="imageContainer" width="400px" height="400px">
                 <div class="wow">
-                    <center>
-                    <paper-spinner class="blue" role="progressbar" aria-label="loading" active="" style="position: absolute; top: 250px; left: 175px"></paper-spinner>
+                    <center >
+                    <div id="spinner">
+                    <paper-spinner role="progressbar" aria-label="loading" active="" style="position: absolute; top: 250px; left: 175px"></paper-spinner>
+                    </div>
 
                     <content select="image-container"></content>
 
