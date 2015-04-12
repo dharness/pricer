@@ -6,17 +6,10 @@
 
     <link rel="stylesheet" href="css/style.css">
         <div class="app" width='500px' height='700px'>
-            <!-- <h1>Apache Cordova</h1> -->
-            <div id="deviceready" class="blink">
-            </div>
 
             <script type="text/javascript">
                 app.initialize();
                 function erase() {
-                    // var user = document.getElementById("username_field");
-                    // var user2 = $('#username_field').val();
-                    // alert(user.value);
-                    // alert(user2);
                     window.username = 'morgan'; //user.value;
                     window.kingCoup.getCoupons();
 
@@ -62,29 +55,12 @@
 
                         for(var i = 0; i < data.length; i++) {
                             // Create the list item:
-                            console.log(' ======= Apres tu =======')
-                            console.log(data[i].showImageStandardBig)
-
-                            var item = document.createElement('div');
-                            item.setAttribute('class','person');
-                            list.appendChild(item);
-
-                            // Set its contents:
-                            var span = document.createElement('span');
-                            item.appendChild(span);
-
-                            var image = document.createElement('img');
-                            image.setAttribute('src', data[i].showImageStandardBig);
-                            span.appendChild(image);
-
-                            var h = document.createElement('H1');
-                            var t = document.createTextNode(data[i].dealTitle);
-                            h.appendChild(t)
-
-                            span.appendChild(h);
-
-                            // Add it to the list:
-                            list.appendChild(item);
+                            var imgToShow = data[i].showImageStandardBig;
+                            var dealTitle = data[i].dealTitle;
+                            var dealInfo = data[i].dealInfo.substring(0, 20) + '...';
+                            var strVar = "";
+                                strVar += "<coupon-shell width='400px' height='400px'><couponImage><img = src='" + imgToShow + "'\/><\/couponImage><couponTitle>" + dealTitle + "<\/couponTitle><couponDetails>" + dealInfo + "<\/couponDetails><\/coupon-shell>";
+                                $('#imageContainer').html(strVar);
                         }
                     document.getElementById('couponsList').appendChild(list);
                     });
@@ -111,14 +87,6 @@
             </div>
 
         </div>
-
-
-        <div id="fb-root"></div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript">
-
-        </script>
-
 
   </template>
 
