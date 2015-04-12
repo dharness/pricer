@@ -74,10 +74,10 @@ CouponLoader.prototype.next = function(decision) {
         window.currentCoupons[this.couponIndex].swiped = false;
     }
 
+    this.couponIndex++;
 
     this.loadCurrent();
     //increment to the next coupon
-    this.couponIndex++;
 
 }
 
