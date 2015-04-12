@@ -57,6 +57,8 @@ CouponLoader.prototype.init = function() {
 
 
 CouponLoader.prototype.next = function() {
+
+    updateSelectedCoupions();
     // console.log(currentCoupons);
     var imgToShow = window.currentCoupons[window.kingCoup.count].showImageStandardBig;
     window.kingCoup.count++;
@@ -65,8 +67,13 @@ CouponLoader.prototype.next = function() {
     var strVar = "";
     strVar += '<img id=\"dragImage\" width=\"300\" height=\"200\" src=\"' + imgToShow + '\">';
 
-    $('#imageContainer').html(strVar);
+    window.mainImage.html(strVar);
 }
+
+function updateSelectedCoupions() {
+
+}
+
 
 CouponLoader.prototype.getCoupons = function() {
 
