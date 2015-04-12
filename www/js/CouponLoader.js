@@ -55,7 +55,7 @@ CouponLoader.prototype.init = function() {
             }
         });
      }
-
+//hey
 
     $("#dragImage").on(endEvent, function() {
         console.log('ending')
