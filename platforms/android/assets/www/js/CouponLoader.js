@@ -63,7 +63,7 @@ CouponLoader.prototype.init = function() {
         console.log('ending')
     });
 
-    window.kingCoup.getCoupons();
+
 }
 
 
@@ -94,6 +94,7 @@ CouponLoader.prototype.next = function(decision) {
             });
         });
     }
+
 
 }
 
