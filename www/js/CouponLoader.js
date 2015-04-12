@@ -63,7 +63,7 @@ CouponLoader.prototype.init = function() {
         console.log('ending')
     });
 
-    window.kingCoup.getCoupons();
+
 }
 
 
