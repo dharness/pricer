@@ -23,141 +23,37 @@
         <meta name="format-detection" content="telephone=no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/git/jquery.mobile-git.css">
+        <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+        <link rel="import" href="bower_components/core-scaffold/core-scaffold.html">
+        <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
+        <link rel="import" href="bower_components/core-menu/core-menu.html">
+        <link rel="import" href="bower_components/core-item/core-item.html">
+        <link rel="import" href="bower_components/paper-toast/paper-toast.html">
+        <link rel="import" href="bower_components/paper-fab/paper-fab.html">
+        <link rel="import" href="login-view.html">
+        <link rel="import" href="swipe-view.html">
+        <link rel="import" href="resources/sketch-icons.html">
+
+
+
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://code.jquery.com/mobile/git/jquery.mobile-git.js"></script>
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+
+
+        <title>The Petite Prince</title>
     </head>
-    <body>
-
-
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-            <div class="event listening button" onclick="login();">Login with Facebook</div>
-            <div class="event listening button" onclick="showDialog();">Show Dialog with Facebook</div>
-            <div class="event listening button" onclick="apiTest();">Test API with Facebook</div>
-            <div class="event listening button" onclick="getAccessToken();">Get access token with Facebook</div>
-            <div class="event listening button" onclick="getStatus();">Get login status with Facebook</div>
-            <div class="event listening button" onclick="logout();">Logout with Facebook</div>
-        </div>
-
-
-        <div id="fb-root"></div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript">
-<<<<<<< HEAD
-            app.initialize();
-        </script>
-        <style>
-
-           html, body {
-                height: 90%;
-                margin: 0;
-            }
-            body {
-                font-family: sans-serif;
-            }
-            core-scaffold {
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-=======
-            var login = function () {
-                if (window.cordova.platformId == "browser") {
-                    facebookConnectPlugin.browserInit("360025844205214");
-                }
-                facebookConnectPlugin.login( ["email"], 
-                    function (response) { alert(JSON.stringify(response)) },
-                    function (response) { alert(JSON.stringify(response)) });
->>>>>>> b685537dd421f6ee1163b1a47258afca7c2b5a8d
-            }
-            
-            var showDialog = function () { 
-                facebookConnectPlugin.showDialog( { method: "feed" }, 
-                    function (response) { alert(JSON.stringify(response)) },
-                    function (response) { alert(JSON.stringify(response)) });
-            }
-            
-            var apiTest = function () { 
-                facebookConnectPlugin.api( "me/?fields=id,email", ["user_birthday"],
-                    function (response) { alert(JSON.stringify(response)) },
-                    function (response) { alert(JSON.stringify(response)) }); 
-            }
-
-            var getAccessToken = function () { 
-                facebookConnectPlugin.getAccessToken( 
-                    function (response) { alert(JSON.stringify(response)) },
-                    function (response) { alert(JSON.stringify(response)) });
-            }
-<<<<<<< HEAD
-            .draggable.is-dragging { opacity: 0.7; }
-
-            .clip{
-                position: absolute
-                top: 20px;
-            }
-        </style>
-    </head>
-
-    <!-- This is for logging, do not remove -->
-       <div id="deviceready" class="blink">
-            <p class="event listening">Connecting to Device</p>
-            <p class="event received">Device is Ready</p>
-        </div>
-
-    <body unresolved draggable="false">
-        <core-scaffold draggable="false">
-            <core-header-panel navigation flex mode="seamed" draggable="false">
-                <core-toolbar id="core_toolbar">Tools</core-toolbar>
-                <core-menu theme="core-light-theme">
-                    <form>
-                        <div class="ui-field-contain">
-                            <label for="slider">Radius:</label>
-                            <input type="range" name="slider" id="slider" min="0" max="100" value="50" >
-                            <p>Current Search Radius: <span id = "slider-value">50</span> mi</p>
-                        </div>
-                    </form>
-                    <select name="colours" size="5">
-                        <option selected="selected">Black</option>
-                        <option>Red</option>
-                        <option>Blue</option>
-                        <option>Yellow</option>
-                        <option>Green</option>
-                    </select>
-                </core-menu>
-            </core-header-panel>
-            <div tool>Price Mice
-            <button id = "listCoups">My Coupons</button>
-            </div>
-            
-            <div id="imageContainer">
-                <img id="dragImage" width="300" height="250" src="resources/images/sampleCoupon.png">
-            </div>
-
-            <paper-fab id="clip" style="position: absolute; top: 275px; left: 200px; background-color: #57A549;" icon="sketch-icons:scissors" onclick="kingCoup.next()"></paper-fab>
-            
-            <paper-fab id="discard" style="position: absolute; top: 275px; left: 50px" icon="delete" onclick="kingCoup.next()"></paper-fab>
-
-            <paper-toast id="toast1" text="It was junk anyway!"></paper-toast>
-        </core-scaffold>
-=======
-            
-            var getStatus = function () { 
-                facebookConnectPlugin.getLoginStatus( 
-                    function (response) { alert(JSON.stringify(response)) },
-                    function (response) { alert(JSON.stringify(response)) });
-            }
->>>>>>> b685537dd421f6ee1163b1a47258afca7c2b5a8d
-
-            var logout = function () { 
-                facebookConnectPlugin.logout( 
-                    function (response) { alert(JSON.stringify(response)) },
-                    function (response) { alert(JSON.stringify(response)) });
-            }
-        </script>
+    <body id="theBody">
+        <swipe-view></swipe-view>
     </body>
+
+
 </html>

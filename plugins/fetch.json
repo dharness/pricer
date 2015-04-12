@@ -1,8 +1,0 @@
-{
-    "com.phonegap.plugins.facebookconnect": {
-        "source": {
-            "type": "local",
-            "path": "plugins/phonegap-facebook-plugin"
-        }
-    }
-}
