@@ -83,8 +83,7 @@ CouponLoader.prototype.next = function(decision) {
     // console.log("img ", imgToShow)
     var strVar = "";
     strVar += '<img id=\"dragImage\" width=\"300\" height=\"200\" src=\"' + imgToShow + '\">';
-
-    //  window.mainImage.html(strVar);
+    $('#imageContainer').html(strVar);
 }
 
 function updateUser() {
