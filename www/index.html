@@ -23,7 +23,8 @@
             app.initialize();
         </script>
         <style>
-            html, body {
+
+           html, body {
                 height: 90%;
                 margin: 0;
             }
@@ -88,6 +89,13 @@
             <core-header-panel navigation flex mode="seamed" draggable="false">
                 <core-toolbar id="core_toolbar">Tools</core-toolbar>
                 <core-menu theme="core-light-theme">
+                    <form>
+                        <div class="ui-field-contain">
+                            <label for="slider">Radius:</label>
+                            <input type="range" name="slider" id="slider" min="0" max="100" value="50" >
+                            <p>Current Search Radius: <span id = "slider-value">50</span> mi</p>
+                        </div>
+                    </form>
                     <select name="colours" size="5">
                         <option selected="selected">Black</option>
                         <option>Red</option>
@@ -97,11 +105,16 @@
                     </select>
                 </core-menu>
             </core-header-panel>
-            <div tool>Price Mice</div>
+            <div tool>Price Mice
+            <button id = "listCoups">My Coupons</button>
+            </div>
             
             <div id="imageContainer">
                 <img id="dragImage" width="300" height="200" src="resources/images/sampleCoupon.png">
             </div>
+
+            <paper-fab icon="delete" onclick=""></paper-fab>
+            <paper-fab icon="delete" onclick=""></paper-fab>
 
             <paper-toast id="toast1" text="It was junk anyway!"></paper-toast>
         </core-scaffold>

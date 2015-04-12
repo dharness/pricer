@@ -33,6 +33,10 @@ CouponLoader.prototype.init = function() {
         checkThreshold();
     });
 
+    $("#slider").on("input", function() {
+        document.getElementById("slider-value").innerHTML = this.value;
+    })
+
     $("#dragImage").on(endEvent, function() {
         console.log('ending')
     });
