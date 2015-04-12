@@ -88,7 +88,7 @@ CouponLoader.prototype.next = function(decision) {
     // console.log("data", window.currentCoupons)
     // console.log("img ", imgToShow)
     var strVar = "";
-    strVar += '<img id=\"dragImage\" width=\"300\" height=\"200\" src=\"' + imgToShow + '\">';
+    strVar += "<coupon-shell width='400px' height='400px'><couponImage><img = src='" + imgToShow + "'\/><\/couponImage><\/coupon-shell>";
     $('#imageContainer').html(strVar);
 }
 
