@@ -41,11 +41,9 @@ CouponLoader.prototype.init = function() {
         var currentVal = this.value;
         if (currentVal == 10) {
             document.getElementById("sliderAdventure-value").innerHTML = "Scooby Doo & Shaggy";
-        }
-        else if (currentVal == 20) {
+        } else if (currentVal == 20) {
             document.getElementById("sliderAdventure-value").innerHTML = "Indiana Jones";
-        }
-        else if (currentVal == 30) {
+        } else if (currentVal == 30) {
             document.getElementById("sliderAdventure-value").innerHTML = "Chuck Norris";
         }
     });
@@ -56,6 +54,7 @@ CouponLoader.prototype.init = function() {
 
     this.getCoupons();
 }
+
 
 CouponLoader.prototype.next = function() {
     // console.log(currentCoupons);
@@ -70,34 +69,34 @@ CouponLoader.prototype.next = function() {
 CouponLoader.prototype.getCoupons = function() {
 
 
-    var request = $.ajax({
-        type: 'POST',
-        dataType: 'json',
-        contentType: 'application/json; charset=utf-8',
-        url: 'http://localhost:3002/deals',
-        data: JSON.stringify({
-            username: "morgan"
-        }),
-        crossDomain: true
-    });
+    // var request = $.ajax({
+    //     type: 'POST',
+    //     dataType: 'json',
+    //     contentType: 'application/json; charset=utf-8',
+    //     url: 'http://localhost:3002/deals',
+    //     data: JSON.stringify({
+    //         username: "morgan"
+    //     }),
+    //     crossDomain: true
+    // });
 
-    request.done(function(data) {
-        currentCoupons = data;
-        console.log("Got the dataa");
-    });
-
-    request.fail(function(jqXHR, textStatus) {
-        console.log("request error: " + textStatus);
-    });
-
-
-
-    // $.post("http://localhost:3002/deals", {
-    //     username: "morgan"
-    // }).done(function(data) {
+    // request.done(function(data) {
     //     currentCoupons = data;
     //     console.log("Got the dataa");
     // });
+
+    // request.fail(function(jqXHR, textStatus) {
+    //     console.log("request error: " + textStatus);
+    // });
+
+
+
+    $.post("http://localhost:3002/deals", {
+        username: "morgan"
+    }).done(function(data) {
+        currentCoupons = data;
+        console.log("Got the dataa");
+    });
 }
 
 

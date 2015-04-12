@@ -83,6 +83,17 @@
         </style>
     </head>
 
+    <div class="content">
+    <core-animated-pages selected="0">
+    <section>
+        <div>Home page contents</div>
+        </section>
+        <section>
+        <div>Gallery contents</div>
+        </section>
+    </core-animated-pages>
+    </div>
+
     <!-- This is for logging, do not remove -->
        <div id="deviceready" class="blink">
             <p class="event listening">Connecting to Device</p>
@@ -101,17 +112,17 @@
                             <p>Current Search Radius: <span id = "slider-value">50</span> mi</p>
                         </div>
                     </form>
-                    <select name="colours" size="5">
-                        <option selected="selected">Black</option>
-                        <option>Red</option>
-                        <option>Blue</option>
-                        <option>Yellow</option>
-                        <option>Green</option>
-                    </select>
+
                 </core-menu>
             </core-header-panel>
             <div tool>Price Mice
-            <button id = "listCoups">My Coupons</button>
+            <button id = "listCoups" onclick = function() {
+                $(':mobile-pagecontainer').pagecontainer('change', 'list.html', {
+                    transition: 'flip',
+                    changeHash: false,
+                    reverse: true
+                });
+            }, 1000);>My Coupons</button>
             </div>
             
             <div id="imageContainer">
