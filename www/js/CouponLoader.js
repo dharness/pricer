@@ -35,15 +35,15 @@ CouponLoader.prototype.init = function() {
         checkThreshold();
     });
 
-    initRange = function () {
-        setTimeout(function(){}, 2000);
+    initRange = function() {
+        setTimeout(function() {}, 2000);
         $("#slider").on("input", function() {
             document.getElementById("slider-value").innerHTML = this.value;
         });
     }
 
-     initSlider = function () {
-        setTimeout(function() {},1500);
+    initSlider = function() {
+        setTimeout(function() {}, 1500);
         $("#sliderAdventure").on("input", function() {
             var currentVal = this.value;
             if (currentVal == 10) {
@@ -54,7 +54,7 @@ CouponLoader.prototype.init = function() {
                 document.getElementById("sliderAdventure-value").innerHTML = "Chuck Norris";
             }
         });
-     }
+    }
 
 
     $("#dragImage").on(endEvent, function() {
@@ -70,10 +70,8 @@ CouponLoader.prototype.next = function(decision) {
     //Update the swiped attribute of the last coupon
     if (decision == "keep") {
         window.currentCoupons[this.couponIndex].swiped = true;
-        console.log(window.currentCoupons[this.couponIndex]);
     } else if (decision == "discard") {
         window.currentCoupons[this.couponIndex].swiped = false;
-        console.log(window.currentCoupons[this.couponIndex]);
     }
 
     this.couponIndex++; //increment to the next coupon
@@ -94,7 +92,6 @@ CouponLoader.prototype.next = function(decision) {
 
 function updateUser() {
     console.log("Out of coupons!");
-    console.log(window.currentCoupons);
     $.post("http://dylandjoegotosanfrancisco.com:3002/updateUser", {
         username: "morgan",
         deals: window.currentCoupons
