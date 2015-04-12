@@ -54,7 +54,9 @@ CouponLoader.prototype.init = function() {
                 document.getElementById("sliderAdventure-value").innerHTML = "Chuck Norris";
             }
         });
+
     }
+
 
 
     $("#dragImage").on(endEvent, function() {
