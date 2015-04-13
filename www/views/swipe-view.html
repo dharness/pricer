@@ -1,0 +1,50 @@
+<polymer-element name="swipe-view">
+<template>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="../css/swipe-style.css">
+    </head>
+
+    <body unresolved draggable="false">
+        <core-scaffold draggable="false">
+            <core-header-panel navigation flex mode="seamed" draggable="false">
+                <core-toolbar id="core_toolbar">Tools</core-toolbar>
+                <core-menu theme="core-light-theme">
+
+                <content select="fizz"></content>
+
+                </core-menu>
+            </core-header-panel>
+            <div tool>Deal Mining
+            <paper-button raised id = "listCoups" style="background-color: #FFFFFF; color: #E88449;position: absolute; top: 10px; left: 200px" onclick="loadView['my-coupons-view']()">My Coupons</paper=button>
+            </div>
+            
+
+            <div id="imageContainer" width="400px" height="400px">
+                <div class="wow">
+                    <center >
+                    <div id="spinner">
+                    <paper-spinner role="progressbar" aria-label="loading" active="" style="position: absolute; top: 250px; left: 175px"></paper-spinner>
+                    </div>
+
+                    <content select="image-container"></content>
+
+
+                    </center>
+                </div>  
+            </div>
+
+            <paper-fab id="clip" style="position: absolute; top: 450px; left: 230px; background-color: #57A549;" icon="sketch-icons:scissors" onclick="kingCoup.next('keep')"></paper-fab>
+            
+            <paper-fab id="discard" style="position: absolute; top: 450px; left: 80px" icon="delete" onclick="window.kingCoup.next('discard')"></paper-fab>
+
+            <paper-toast id="toast1" text="It was junk anyway!"></paper-toast>
+        </core-scaffold>
+
+    </body>
+    </template>
+  <script>
+    Polymer();
+  </script>
+    
+</polymer-element >
