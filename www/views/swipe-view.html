@@ -10,17 +10,40 @@
             <core-header-panel navigation flex mode="seamed" draggable="false">
                 <core-toolbar id="core_toolbar">Tools</core-toolbar>
                 <core-menu theme="core-light-theme">
-
-                <content select="fizz"></content>
+                <form>
+                    <div class="ui-field-contain">
+                        <center>
+                            <label for="slider">
+                            <img src="../img/radius.png"></img>
+                            </label>
+                            <br>
+                            <input type="range" name="slider" id="slider" min="0" max="100" value="50" >
+                            <p>Current Search Radius: <span id = "slider-value">50</span> mi</p>
+                        </center>
+                        <br>
+                        <br>
+                    </div>
+                    <div class="ui-field-contain">
+                        <center>
+                            <label for="sliderAdventure">
+                            <img src="../img/adventurous.png"></img>
+                            </label>
+                            <br>
+                            <input type="range" name="sliderAdventure" id="sliderAdventure" min="10" max="30" value="20" step = "10">
+                            <p><span id ="sliderAdventure-value">Indiana Jones</span></p>
+                        </center>
+                    </div>
+                  </form>
+                <button onclick="loadView['login-view']()">Log-out</button>
 
                 </core-menu>
             </core-header-panel>
             <div tool>Deal Mining
-            <paper-button raised id = "listCoups" style="background-color: #FFFFFF; color: #E88449;position: absolute; top: 10px; left: 200px" onclick="loadView['my-coupons-view']()">My Coupons</paper=button>
+            <paper-button raised id="listCoups" style="background-color: #FFFFFF; color: #E88449;position: absolute; top: 10px; left: 200px" onclick="loadView['my-coupons-view']()">My Coupons</paper=button>
             </div>
             
 
-            <div id="imageContainer" width="400px" height="400px">
+<!--             <div id="imageContainer" width="400px" height="400px">
                 <div class="wow">
                     <center >
                     <div id="spinner">
@@ -32,7 +55,9 @@
 
                     </center>
                 </div>  
-            </div>
+            </div> -->
+
+            <coupon-card></coupon-card>
 
             <paper-fab id="clip" style="position: absolute; top: 450px; left: 230px; background-color: #57A549;" icon="sketch-icons:scissors" onclick="kingCoup.next('keep')"></paper-fab>
             
@@ -44,7 +69,20 @@
     </body>
     </template>
   <script>
-    Polymer();
+    Polymer({
+        ready: function() {
+                this.$.on("input", function() {
+                var currentVal = this.value;
+                if (currentVal == 10) {
+                    document.getElementById("sliderAdventure-value").innerHTML = "Scooby Doo & Shaggy";
+                } else if (currentVal == 20) {
+                    document.getElementById("sliderAdventure-value").innerHTML = "Indiana Jones";
+                } else if (currentVal == 30) {
+                    document.getElementById("sliderAdventure-value").innerHTML = "Chuck Norris";
+                }
+            });
+        }
+    });
   </script>
     
 </polymer-element >

@@ -1,0 +1,33 @@
+<polymer-element name="signup-view">
+
+<script type="text/javascript"></script>
+  <template>
+    <link rel="stylesheet" href="../css/login-style.css">
+        <div class="app" width='500px' height='700px'>
+            <body>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+              <div class="login-card">
+                <h1>Sign Up</h1><br>
+                <input id='name_field' type="text" placeholder="Name">
+                <input id='gender_field' type="text" placeholder="Gender">
+                <input id='age_field' type="text" placeholder="Age">
+                <input id='age_field' type="text" placeholder="Age">
+                <input id='email_field' type="text" placeholder="eMail">
+                <input id='username_field' type="text" placeholder="Username">
+                <input id='password_field' type="text" placeholder="Password">
+                <input type="submit" name="login" class="login login-submit" onclick="loadView['swipe-view']()">
+                <a onclick="loadView['login-view']()">Cancel</a>
+            </div>
+
+        </div>
+
+  </template>
+
+  <script>
+    Polymer();
+  </script>
+</polymer-element>

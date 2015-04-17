@@ -8,11 +8,15 @@
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
 
+        <!-- Firebase -->
+        <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
 
         <link rel="stylesheet" type="text/css" href="css/index.css" />
 
         <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
         <link rel="import" href="bower_components/core-scaffold/core-scaffold.html">
+        <link rel="import" href="bower_components/firebase-element/firebase-element.html">
+        <link rel="import" href="bower_components/firebase-element/firebase-login.html">
         <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
         <link rel="import" href="bower_components/core-menu/core-menu.html">
         <link rel="import" href="bower_components/core-item/core-item.html">
@@ -22,8 +26,11 @@
         <link rel="import" href="bower_components/paper-spinner/paper-spinner.html">
         <link rel="import" href="views/my-coupons-view.html">
         <link rel="import" href="views/login-view.html">
+        <link rel="import" href="views/signup-view.html">
         <link rel="import" href="views/coupon-shell.html">
-        
+        <link rel="import" href="views/coupon-card.html">
+
+         
         <link rel="import" href="resources/custom-icons.html">
 
 
@@ -33,15 +40,17 @@
         <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
 
         <script type="text/javascript" src="js/CouponLoader.js"></script>
+        <script type="text/javascript" src="js/AccountsManager.js"></script>
         <script type="text/javascript" src="js/transitions.js"></script>
         <link rel="import" href="views/swipe-view.html">
-        <script type="text/javascript" src="js/index.js"></script>
+        <!-- // <script type="text/javascript" src="js/index.js"></script> -->
 
 
         
         <title>Deal Mining</title>
     </head>
     <body id="theBody">
-        <login-view></login-view>
+        <!-- <login-view></login-view> -->
+        <swipe-view></swipe-view>
     </body>
 </html>

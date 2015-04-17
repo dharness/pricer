@@ -1,0 +1,36 @@
+<polymer-element name="signup-view">
+
+<script type="text/javascript"></script>
+  <template>
+    <link rel="stylesheet" href="../css/login-style.css">
+        <div class="app" width='500px' height='700px'>
+            <body>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+              <div class="login-card">
+                <h1>Sign Up</h1><br>
+                <input id='email_field' type="text" placeholder="eMail">
+                <input id='password_field' type="text" placeholder="Password">
+                <input type="submit" name="login" class="login login-submit" on-click="{{doClick}}">
+                <a onclick="loadView['login-view']()">Cancel</a>
+            </div>
+
+        </div>
+
+  </template>
+
+  <script>
+    Polymer({
+      ready: function () {
+      console.log();
+      console.log(this.shadowRoot);
+    },
+      doClick: function() {
+        AM.createUser(this.$.email_field.value, this.$.password_field.value);
+      }
+  });
+  </script>
+</polymer-element>

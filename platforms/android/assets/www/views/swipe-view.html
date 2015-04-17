@@ -2,88 +2,8 @@
 <template>
 
     <head>
-        <meta name="viewport" content="user-scalable=no, initial-scale=1,
-        maximum-scale=1, minimum-scale=1, width=device-width,
-        height=device-height, target-densitydpi=device-dpi">
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-
-        <style>
-
-           html, body {
-                height: 90%;
-                margin: 0;
-            }
-            body {
-                font-family: sans-serif;
-            }
-            core-scaffold {
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-            }
-
-            core-scaffold::shadow core-toolbar {
-              background: #EC8C50;
-              color: white;
-            }
-
-            core-scaffold::shadow core-header-panel {
-              background: #FFF;
-              color: white;
-            }
-            #core_toolbar {
-                color: rgb(255, 255, 255);
-                background-color: #FF9857;
-            }
-            .imageContainer {
-                border-top-left-radius: 2px;
-                border-top-right-radius: 2px;
-                border-bottom-right-radius: 2px;
-                border-bottom-left-radius: 2px;
-                box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
-                margin: 2%;
-                background-color: rgb(255, 255, 255);
-                text-align: left;
-            }
-            paper-fab {
-                position: absolute;
-                right: 20px; 
-                bottom: 20px;
-            }
-
-            canvas {
-                border: 1px solid #ccc;
-                background-color: white;
-            }
-
-            body { font-family: sans-serif; }
-
-            .draggable {
-              width: 140px;
-              height: 140px;
-              background: #F90;
-              border-radius: 10px;
-            }
-            .draggable.is-pointer-down {
-              background: #09F;
-            }
-            .draggable.is-dragging { opacity: 0.7; }
-
-            .clip{
-                position: absolute
-                top: 20px;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="../css/swipe-style.css">
     </head>
-
-    <!-- This is for logging, do not remove -->
-       <div id="deviceready" class="blink">
-            <p class="event listening">Connecting to Device</p>
-            <p class="event received">Device is Ready</p>
-        </div>
 
     <body unresolved draggable="false">
         <core-scaffold draggable="false">
@@ -92,15 +12,16 @@
                 <core-menu theme="core-light-theme">
 
                 <content select="fizz"></content>
+                <button onclick="loadView['login-view']()">Log-out</button>
 
                 </core-menu>
             </core-header-panel>
             <div tool>Deal Mining
-            <paper-button raised id = "listCoups" style="background-color: #FFFFFF; color: #E88449;position: absolute; top: 10px; left: 200px" onclick="moveToCV()">My Coupons</paper=button>
+            <paper-button raised id = "listCoups" style="background-color: #FFFFFF; color: #E88449;position: absolute; top: 10px; left: 200px" onclick="loadView['my-coupons-view']()">My Coupons</paper=button>
             </div>
             
 
-            <div id="imageContainer" width="400px" height="400px">
+<!--             <div id="imageContainer" width="400px" height="400px">
                 <div class="wow">
                     <center >
                     <div id="spinner">
@@ -112,10 +33,9 @@
 
                     </center>
                 </div>  
-            </div>
+            </div> -->
 
-            
- 
+            <coupon-card></coupon-card>
 
             <paper-fab id="clip" style="position: absolute; top: 450px; left: 230px; background-color: #57A549;" icon="sketch-icons:scissors" onclick="kingCoup.next('keep')"></paper-fab>
             

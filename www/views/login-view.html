@@ -1,4 +1,5 @@
 <polymer-element name="login-view">
+
 <script type="text/javascript"></script>
   <template>
     <link rel="stylesheet" href="../css/login-style.css">
@@ -16,7 +17,10 @@
                 
                 <h1>Log-in</h1><br>
                 <input id='username_field' type="text" placeholder="Username">
-                <input type="submit" name="login" class="login login-submit" onclick="loadView['swipe-view']()">
+                <input id='password_field' type="text" placeholder="Password">
+                <input type="submit" name="login" class="login login-submit" on-click="{{loginBasic}}">
+                <input type="submit" name="login-fb" class="login login-facebook" value="Facebook" on-click="{{loginFacebook}}"><br>
+                <a onclick="loadView['signup-view']()">Sign up</a>
             </div>
 
         </div>
@@ -24,7 +28,15 @@
   </template>
 
   <script>
-    Polymer();
+    Polymer({
+      loginFacebook: function() {
+        AM.loginFacebook();
+      },
+
+      loginBasic: function() {
+        AM.loginBasic(this.$.username_field.value, this.$.password_field.value)
+      }
+    });
   </script>
 </polymer-element>
 

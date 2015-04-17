@@ -6,8 +6,9 @@
     </description>
     <preference name="Fullscreen" value="true" />
     <preference name="webviewbounce" value="false" />
+    <preference name="KeyboardShrinksView" value="true" />
     <author email="dharness@uwo.ca" href="http://cordova.io">
-        Dylan Harness, Morgan Moskalyk, Joe Gaebel, Casey Doyle
+        Dylan Harness, Morgan Moskalyk, Joe Gaebel, Casey Doyle, Naila Nur
     </author>
     <content src="index.html" />
     <access origin="*" />

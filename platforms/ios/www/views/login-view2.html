@@ -1,0 +1,39 @@
+<polymer-element name="login-view">
+<firebase-login id="baseLogin" user="{{user}}" statusKnown="{{statusKnown}}" location="https://dealminer.firebaseio.com" provider="github" on-login="{{onLogin}}" on-error="{{onLoginError}}"></firebase-login>
+
+<script type="text/javascript"></script>
+  <template>
+    <link rel="stylesheet" href="../css/login-style.css">
+        <div class="app" width='500px' height='700px'>
+            <body>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+              <div class="login-card">
+                <center>
+                    <img src='../img/logo.png' height='250px' width='250px'></img>
+                </center>
+                
+                <h1>Log-in</h1><br>
+                <input id='username_field' type="text" placeholder="Username">
+                <input type="submit" name="login" class="login login-submit" onclick="loadView['swipe-view']()">
+            </div>
+
+        </div>
+
+  </template>
+
+  <script>
+
+
+    Polymer({
+       login: function() {
+          this.$.baseLogin.login();
+        }
+    });
+  </script>
+</polymer-element>
+
+

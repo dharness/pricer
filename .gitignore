@@ -1,4 +1,4 @@
-ompiled source #
+compiled source #
 ###################
 *.com
 *.class
@@ -19,6 +19,8 @@ ompiled source #
 *.rar
 *.tar
 *.zip
+plugins/phonegap-facebook-plugin/*
+
  
 # Logs and databases #
 ######################

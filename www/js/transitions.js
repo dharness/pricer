@@ -61,6 +61,18 @@ loadView = {
                 $('#couponsList').html(strVar);
             });
         }, 1000);
+    },
+
+    //-----------------------------------// login-view //-----------------------------------//
+
+    'login-view': function() {
+        $('#theBody').html('<login-view></login-view>');
+    },
+
+    //-----------------------------------// signup-view //-----------------------------------//
+
+    'signup-view': function() {
+        $('#theBody').html('<signup-view></signup-view>');
     }
 
 }
