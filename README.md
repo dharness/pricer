@@ -6,11 +6,11 @@ Uses basic MachineLearning library to anaylses the preferences of users and pres
 
 Mongo Datastores and Polymer for UI components and data-binding
 
-![Alt text](../shots/login.jpg?raw=true "Optional Title")
+![Alt text](shots/login.jpg?raw=true "Optional Title")
 
-![Alt text](../shots/main.jpg?raw=true "Optional Title")
+![Alt text](shots/main.jpg?raw=true "Optional Title")
 
-![Alt text](../shots/settings.jpg?raw=true "Optional Title")
+![Alt text](shots/settings.jpg?raw=true "Optional Title")
 
 ### The Need
 
