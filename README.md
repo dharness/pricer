@@ -6,6 +6,12 @@ Uses basic MachineLearning library to anaylses the preferences of users and pres
 
 Mongo Datastores and Polymer for UI components and data-binding
 
+![Alt text](../shots/login.jpg?raw=true "Optional Title")
+
+![Alt text](../shots/main.jpg?raw=true "Optional Title")
+
+![Alt text](../shots/settings.jpg?raw=true "Optional Title")
+
 ### The Need
 
 The consumer is sick and tired of clipping coupons by hand. Deal Miner provides the answer. With a sleek interface, easy to use feature-set and sturdy back end it is the concierge of the modern consumer to the world of savings.
