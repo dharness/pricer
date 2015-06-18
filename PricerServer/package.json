@@ -1,0 +1,15 @@
+{
+    "name": "PricerServer",
+    "main": "server.js",
+    "dependencies": {
+        "express": "~4.0.0",
+        "morgan": "~1.0.0",
+        "mongoose": "~3.8.0",
+        "body-parser": "~1.4.2",
+        "mongodb": "*",
+        "method-override": "~2.0.2",
+        "indico.io": "*",
+        "unirest": "*"
+
+    }
+}
